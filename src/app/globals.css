@@ -1,0 +1,30 @@
+:root {
+  --ink: #30271d;
+  --muted: #716657;
+  --cream: #fbf7ef;
+  --paper: #fffdf8;
+  --honey: #a96518;
+  --line: #e8ddcc;
+}
+* { box-sizing: border-box; }
+html { min-height: 100%; background: var(--cream); }
+body { margin: 0; background: var(--cream); color: var(--ink); font-family: Georgia, 'Times New Roman', serif; }
+a { color: inherit; text-decoration: none; }
+button, input, textarea { font: inherit; }
+.site-header { min-height: 78px; padding: 20px clamp(20px, 6vw, 88px); display: flex; align-items: center; justify-content: space-between; gap: 24px; border-bottom: 1px solid var(--line); background: var(--paper); }
+.brand { font-size: 1.15rem; font-weight: 700; letter-spacing: .02em; }
+.site-nav { display: flex; gap: 26px; font: 600 .9rem Arial, sans-serif; }
+.site-nav a:hover { color: var(--honey); }
+.hero { min-height: 570px; padding: 90px 24px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; background: radial-gradient(ellipse at 50% 40%, #f1e0bc 0%, var(--cream) 67%); }
+.eyebrow { margin: 0 0 22px; color: var(--honey); font: 700 .75rem/1.4 Arial, sans-serif; letter-spacing: .16em; text-transform: uppercase; }
+.hero h1 { max-width: 850px; margin: 0; font-size: clamp(3rem, 7vw, 6rem); line-height: .98; font-weight: 500; letter-spacing: -.045em; }
+.hero-copy { max-width: 570px; margin: 26px 0 0; color: var(--muted); font-size: clamp(1.1rem, 2vw, 1.35rem); line-height: 1.7; }
+.actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 34px; font: 600 .9rem Arial, sans-serif; }
+.button { display: inline-block; padding: 14px 22px; border: 1px solid var(--honey); border-radius: 3px; cursor: pointer; }
+.button-primary { background: var(--honey); color: white; }
+.button-secondary { background: transparent; }
+.site-footer { padding: 24px; border-top: 1px solid var(--line); color: var(--muted); text-align: center; font: .8rem Arial, sans-serif; }
+.content-page { max-width: 1080px; margin: 0 auto; padding: 64px 24px; }
+.content-page h1 { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 500; }
+.muted { color: var(--muted); line-height: 1.7; }
+@media (max-width: 560px) { .site-header { align-items: flex-start; flex-direction: column; } .site-nav { gap: 18px; flex-wrap: wrap; } .hero { min-height: 480px; padding: 72px 22px; } }
