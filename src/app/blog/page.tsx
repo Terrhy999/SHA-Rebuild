@@ -1,4 +1,15 @@
-export default function BlogPage() {
+import config from '@payload-config'
+import { getPayload } from 'payload'
+
+export default async function BlogPage() {
+  const payload = await getPayload({ config })
+  const result = await payload.find({
+    collection: 'posts',
+    where: { status: { equals: 'published' } },
+    sort: '-publishedAt',
+    limit: 24,
+  })
+
   return (
     <>
       <header className="site-header">
@@ -8,7 +19,16 @@ export default function BlogPage() {
       <main className="content-page">
         <p className="eyebrow">Notes from the apiary</p>
         <h1>The Journal</h1>
-        <p className="muted">Blog posts will appear here after the Payload collections and visual editor are connected.</p>
+        {result.docs.length ? (
+          <div className="post-list">
+            {result.docs.map((post) => (
+              <article className="post-item" key={post.id}>
+                <h2><a href={`/blog/${post.slug}`}>{post.title}</a></h2>
+                {post.excerpt ? <p className="muted">{post.excerpt}</p> : null}
+              </article>
+            ))}
+          </div>
+        ) : <p className="muted">Published posts will appear here after content is added in the CMS.</p>}
       </main>
       <footer className="site-footer">Stately Hyland Apiaries LLC</footer>
     </>
